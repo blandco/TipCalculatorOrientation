@@ -126,18 +126,6 @@
         app:layout_constraintLeft_toRightOf="@+id/label_total"
         app:layout_constraintRight_toRightOf="@id/amount_bill" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/darkGreen"
-        android:padding="10dp"
-        android:text="@string/button_calculate"
-        android:textSize="28sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount_total"
-        android:onClick="calculate"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

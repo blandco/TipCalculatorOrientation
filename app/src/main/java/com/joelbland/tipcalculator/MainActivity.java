@@ -8,21 +8,32 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.text.NumberFormat;
+import android.text.TextWatcher;
+import android.text.Editable;
 
 public class MainActivity extends AppCompatActivity {
     private TipCalculator tipCalc;
     public NumberFormat money = NumberFormat.getCurrencyInstance( );
+    private EditText billEditText;
+    private EditText tipEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tipCalc = new TipCalculator( 0.17f, 100.0f );
+        billEditText = ( EditText ) findViewById( R.id.amount_bill );
+        tipEditText = ( EditText ) findViewById( R.id.amount_tip_percent );
+
+        TextChangeHandler tch = new TextChangeHandler( );
+        billEditText.addTextChangedListener( tch );
+        tipEditText.addTextChangedListener(tch);
     }
 
+
+
     /** Called when the user clicks on the Calculate button */
-    public void calculate( View v ) {
-        Log.w( "MainActivity", "v = " + v );
+    public void calculate( ) {
         EditText billEditText =
                 ( EditText ) findViewById( R.id.amount_bill );
         EditText tipEditText =
@@ -51,5 +62,17 @@ public class MainActivity extends AppCompatActivity {
             // pop up an alert view here
         }
     }
+    private class TextChangeHandler implements TextWatcher {
+        public void afterTextChanged( Editable e ) {
+            calculate();
+        }
 
+        public void beforeTextChanged( CharSequence s, int start,
+                                       int count, int after ) {
+        }
+
+        public void onTextChanged( CharSequence s, int start,
+                                   int before, int after ) {
+        }
+    }
 }
