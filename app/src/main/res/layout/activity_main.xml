@@ -6,6 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/amount_guests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:gravity="center"
+        android:hint="@string/amount_guests_hint"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textColor="@color/darkBlue"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/label_guests"
+        app:layout_constraintLeft_toRightOf="@+id/label_tip_percent" />
+
+    <TextView
+        android:id="@+id/amount_total_per_guest"
+        android:layout_width="142dp"
+        android:layout_height="63dp"
+        android:background="@color/lightGreen"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/label_total_per_guest"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/label_total"
+        app:layout_constraintRight_toRightOf="@id/amount_bill" />
+
+    <TextView
+        android:id="@+id/label_total_per_guest"
+        android:layout_width="158dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="264dp"
+        android:background="@color/lightGray"
+        android:padding="10dp"
+        android:text="@string/label_total_per_guest"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/label_bill"
+        app:layout_constraintRight_toRightOf="@+id/label_bill"
+        app:layout_constraintTop_toBottomOf="@id/red_line" />
+
+    <TextView
+        android:id="@+id/amount_tip_per_guest"
+        android:layout_width="142dp"
+        android:layout_height="63dp"
+        android:background="@color/lightGreen"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/label_tip_per_guest"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/label_total"
+        app:layout_constraintRight_toRightOf="@id/amount_bill" />
+
+    <TextView
+        android:id="@+id/label_tip_per_guest"
+        android:layout_width="142dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="184dp"
+        android:background="@color/lightGray"
+        android:padding="10dp"
+        android:text="@string/label_tip_per_guest"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/label_bill"
+        app:layout_constraintRight_toRightOf="@+id/label_bill"
+        app:layout_constraintTop_toBottomOf="@id/red_line" />
+
+    <TextView
+        android:id="@+id/label_guests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:background="@color/lightGray"
+        android:padding="10dp"
+        android:text="@string/label_guests"
+        android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintLeft_toLeftOf="@+id/label_bill"
+        app:layout_constraintRight_toRightOf="@+id/label_bill"
+        app:layout_constraintTop_toBottomOf="@+id/label_bill" />
+
     <TextView
         android:id="@+id/label_bill"
         android:layout_width="wrap_content"
@@ -64,12 +146,27 @@
         app:layout_constraintLeft_toRightOf="@+id/label_tip_percent"
         app:layout_constraintRight_toRightOf="@id/amount_bill" />
 
+    <TextView
+        android:id="@+id/amount_tip"
+        android:layout_width="142dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/lightGreen"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/label_tip"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/label_tip"
+        app:layout_constraintRight_toRightOf="@id/amount_bill" />
+
     <View
         android:id="@+id/red_line"
         android:layout_width="match_parent"
         android:layout_height="5dip"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="96dp"
         android:background="#FF00"
+        app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintLeft_toLeftOf="@id/label_bill"
         app:layout_constraintRight_toRightOf="@id/amount_bill"
         app:layout_constraintTop_toBottomOf="@+id/label_tip_percent" />
@@ -88,16 +185,17 @@
         app:layout_constraintTop_toBottomOf="@id/red_line" />
 
     <TextView
-        android:id="@+id/amount_tip"
-        android:layout_width="162dp"
-        android:layout_height="59dp"
+        android:id="@+id/amount_total"
+        android:layout_width="142dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/lightGreen"
         android:gravity="center"
         android:padding="10dp"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/label_tip"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/label_tip"
+        app:layout_constraintBottom_toBottomOf="@+id/label_total"
+        app:layout_constraintHorizontal_bias="0.982"
+        app:layout_constraintLeft_toRightOf="@+id/label_total"
         app:layout_constraintRight_toRightOf="@id/amount_bill" />
 
     <TextView
@@ -109,23 +207,10 @@
         android:padding="10dp"
         android:text="@string/label_total"
         android:textSize="28sp"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintLeft_toLeftOf="@+id/label_bill"
         app:layout_constraintRight_toRightOf="@+id/label_bill"
         app:layout_constraintTop_toBottomOf="@id/label_tip" />
-
-    <TextView
-        android:id="@+id/amount_total"
-        android:layout_width="162dp"
-        android:layout_height="63dp"
-        android:background="@color/lightGreen"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/label_total"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/label_total"
-        app:layout_constraintRight_toRightOf="@id/amount_bill" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

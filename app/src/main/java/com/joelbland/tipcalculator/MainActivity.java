@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private NumberFormat money = NumberFormat.getCurrencyInstance();
     private EditText billEditText;
     private EditText tipEditText;
+    private EditText guestsEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Configuration config = getResources().getConfiguration();
         modifyLayout(config);
 
-        tipCalc = new TipCalculator(1f,1f);
+        tipCalc = new TipCalculator(1f,1f, 1f);
 
     }
 
@@ -45,10 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
         billEditText = findViewById(R.id.amount_bill);
         tipEditText = findViewById(R.id.amount_tip_percent);
+        guestsEditText = findViewById(R.id.amount_guests);
 
         TextChangeHandler tch = new TextChangeHandler();
         billEditText.addTextChangedListener(tch);
         tipEditText.addTextChangedListener(tch);
+        guestsEditText.addTextChangedListener(tch);
 
     }
 
@@ -56,27 +59,36 @@ public class MainActivity extends AppCompatActivity {
 
         String billString = billEditText.getText().toString();
         String tipString = tipEditText.getText().toString();
+        String guestsString = guestsEditText.getText().toString();
 
         TextView tipTextView = findViewById(R.id.amount_tip);
         TextView totalTextView = findViewById(R.id.amount_total);
+        TextView tipPerGuestTextView = findViewById(R.id.amount_tip_per_guest);
+        TextView totalPerGuestTextView = findViewById(R.id.amount_total_per_guest);
 
         try {
 
             // convert strings to floats
             float billAmount = Float.parseFloat(billString);
             int tipPercent = Integer.parseInt(tipString);
+            float guestsNum = Float.parseFloat(guestsString);
 
             // update Model
             tipCalc.setBill(billAmount);
             tipCalc.setTip(.01f * tipPercent);
+            tipCalc.setGuests(guestsNum);
 
             // calculate in Model
             float tip = tipCalc.tipAmount();
             float total = tipCalc.totalAmount();
+            float tipPerGuest = tipCalc.tipPerGuest();
+            float totalPerGuest = tipCalc.totalPerGuest();
 
             // update View
             tipTextView.setText(money.format(tip));
             totalTextView.setText(money.format(total));
+            tipPerGuestTextView.setText(money.format(tipPerGuest));
+            totalPerGuestTextView.setText(money.format(totalPerGuest));
 
         } catch (NumberFormatException nfe) {
             // alert message
