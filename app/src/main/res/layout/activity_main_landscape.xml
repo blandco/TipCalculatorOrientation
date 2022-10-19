@@ -128,7 +128,7 @@
         android:id="@+id/label_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:background="@color/lightGray"
         android:padding="10dp"
         android:text="@string/label_tip"
